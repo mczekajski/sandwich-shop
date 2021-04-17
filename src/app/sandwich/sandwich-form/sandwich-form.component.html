@@ -7,7 +7,7 @@
       <input type="text" formControlName="name" />
     </label>
     {{ sandwichForm.get("name").errors | json }}
-    <p *ngIf="sandwichForm.get('name').errors?.minlength"
+    <p class="error" *ngIf="showErrors && sandwichForm.get('name').errors?.minlength"
       >Nazwa kanapki musi mieć co najmniej 3 znaki</p
     >
   </section>
@@ -50,10 +50,10 @@
       Price
       <input type="number" formControlName="price" />
     </label>
-    <p *ngIf="sandwichForm.get('price').errors?.min"
+    <p class="error" *ngIf="showErrors && sandwichForm.get('price').errors?.min"
       >Cena kanapki nie może być niższa od 0!</p
     >
-    <p *ngIf="sandwichForm.get('price').errors?.max"
+    <p class="error" *ngIf="showErrors && sandwichForm.get('price').errors?.max"
       >Cena kanapki nie może być wyższa od 20!</p
     >
   </section>
