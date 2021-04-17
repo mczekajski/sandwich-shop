@@ -32,7 +32,7 @@ export class SandwichFormComponent implements OnInit {
       }),
       sauce: Sauce.None,
       vege: false,
-      price: 0
+      price: [0, [Validators.min(0), Validators.max(20)]]
     })
   }
 

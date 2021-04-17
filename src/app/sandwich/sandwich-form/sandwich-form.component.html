@@ -6,11 +6,21 @@
       Name
       <input type="text" formControlName="name" />
     </label>
+    {{ sandwichForm.get("name").errors | json }}
+    <p *ngIf="sandwichForm.get('name').errors?.minlength"
+      >Nazwa kanapki musi mieć co najmniej 3 znaki</p
+    >
+  </section>
+  <section>
     <label>
       Ingredients
       <ul formGroupName="ingredients">
         <li *ngFor="let i of sandwichForm.get('ingredients').value | keyvalue">
-          <input type="checkbox" [formControlName]="i.key" [value]="i.value" />{{ i.key }}
+          <input
+            type="checkbox"
+            [formControlName]="i.key"
+            [value]="i.value"
+          />{{ i.key }}
         </li>
       </ul>
     </label>
@@ -40,9 +50,15 @@
       Price
       <input type="number" formControlName="price" />
     </label>
+    <p *ngIf="sandwichForm.get('price').errors?.min"
+      >Cena kanapki nie może być niższa od 0!</p
+    >
+    <p *ngIf="sandwichForm.get('price').errors?.max"
+      >Cena kanapki nie może być wyższa od 20!</p
+    >
   </section>
 
   <section>
-      <button type="button" (click)="save()">Save</button>
+    <button type="button" (click)="save()">Save</button>
   </section>
 </form>
