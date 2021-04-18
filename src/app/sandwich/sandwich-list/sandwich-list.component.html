@@ -1,0 +1,17 @@
+<h2>Sandwich List</h2>
+
+<!-- 1st METHOD -->
+<!-- <section>
+    <input type="text" #queryInput>
+    <button type="button" (click)="find(queryInput.value)">Find</button>
+</section> -->
+
+<!-- 2nd METHOD -->
+<section>
+    <input type="text" #queryInput>
+    <button type="button" (click)="find2()">Find</button>
+</section>
+
+<section>
+    <wsb-sandwich-item *ngFor="let sandwich of sandwiches | async" [data]="sandwich"></wsb-sandwich-item>
+</section>

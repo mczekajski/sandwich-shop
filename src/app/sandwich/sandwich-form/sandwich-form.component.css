@@ -3,3 +3,14 @@
     color: red;
     font-weight: bold;
 }
+
+fieldset {
+    border: 0;
+    margin: 1rem;
+}
+
+fieldset legend {
+    font-size: small;
+    font-style: italic;
+    font-weight: normal;
+}

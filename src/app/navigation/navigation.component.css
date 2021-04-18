@@ -1,0 +1,14 @@
+a {
+    background-color: gray;
+    color: greenyellow;
+    display: inline-block;
+}
+
+/*
+    lobotomized owl notation
+    * + * { TWOJE REGULY }
+*/
+
+a+a {
+    margin-left: 1rem;
+}

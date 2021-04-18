@@ -1,0 +1,21 @@
+<section *ngIf="sandwichDetails | async as sandwich; else loading">
+  <h2>{{ sandwich.name }}</h2>
+
+  <hr />
+
+  <ul>
+    <li *ngFor="let ingredient of sandwich.ingredients">
+      {{ ingredient }}
+    </li>
+  </ul>
+
+  <p><strong>Sauce:</strong> {{ sandwich.sauce }}</p>
+
+  <p><strong>Vege:</strong> {{ sandwich.vege ? "🥦" : "🥩" }}</p>
+
+  <p><strong>Price:</strong> {{ sandwich.price | currency }}</p>
+</section>
+
+<ng-template #loading>
+  <p>Loading a sandwich... Please, wait.</p>
+</ng-template>

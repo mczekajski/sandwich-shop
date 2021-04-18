@@ -2,60 +2,73 @@
 
 <form autocomplete="off" novalidate [formGroup]="sandwichForm">
   <section>
-    <label>
-      Name
+    <fieldset>
+      <legend>Name</legend>
+
       <input type="text" formControlName="name" />
-    </label>
-    {{ sandwichForm.get("name").errors | json }}
-    <p class="error" *ngIf="showErrors && sandwichForm.get('name').errors?.minlength"
-      >Nazwa kanapki musi mieć co najmniej 3 znaki</p
-    >
-  </section>
-  <section>
-    <label>
-      Ingredients
-      <ul formGroupName="ingredients">
-        <li *ngFor="let i of sandwichForm.get('ingredients').value | keyvalue">
-          <input
-            type="checkbox"
-            [formControlName]="i.key"
-            [value]="i.value"
-          />{{ i.key }}
-        </li>
-      </ul>
-    </label>
+
+      <p
+        class="error"
+        *ngIf="showErrors && sandwichForm.get('name').errors?.minlength"
+      >
+        Nazwa kanapki musi mieć co najmniej 5 znaków!
+      </p>
+    </fieldset>
   </section>
 
   <section>
-    <label>
-      Sauce
+    <fieldset>
+      <legend>Ingredients</legend>
+
+      <ul formGroupName="ingredients">
+        <li *ngFor="let i of sandwichForm.get('ingredients').value | keyvalue">
+          <input type="checkbox" [formControlName]="i.key" [value]="i.value" />
+          {{ i.key }}
+        </li>
+      </ul>
+    </fieldset>
+  </section>
+
+  <section>
+    <fieldset>
+      <legend>Sauce</legend>
+
       <select formControlName="sauce">
         <option *ngFor="let s of sauces" [value]="s.value">
           {{ s.label }}
         </option>
       </select>
-    </label>
+    </fieldset>
   </section>
 
   <section>
-    <label>
-      Vege
+    <fieldset>
+      <legend>Vege</legend>
+
       <input type="radio" [value]="true" formControlName="vege" /> Yes
       <input type="radio" [value]="false" formControlName="vege" /> No
-    </label>
+    </fieldset>
   </section>
 
   <section>
-    <label>
-      Price
+    <fieldset>
+      <legend>Price</legend>
+
       <input type="number" formControlName="price" />
-    </label>
-    <p class="error" *ngIf="showErrors && sandwichForm.get('price').errors?.min"
-      >Cena kanapki nie może być niższa od 0!</p
-    >
-    <p class="error" *ngIf="showErrors && sandwichForm.get('price').errors?.max"
-      >Cena kanapki nie może być wyższa od 20!</p
-    >
+
+      <p
+        class="error"
+        *ngIf="showErrors && sandwichForm.get('price').errors?.min"
+      >
+        Cena kanapki nie może być niższa od 0!
+      </p>
+      <p
+        class="error"
+        *ngIf="showErrors && sandwichForm.get('price').errors?.max"
+      >
+        Cena kanapki nie może być wyższa od 20!
+      </p>
+    </fieldset>
   </section>
 
   <section>
